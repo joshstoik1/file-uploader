@@ -256,6 +256,7 @@ qq.FileUploaderBasic = function(o){
         params: {},
         button: null,
         multiple: true,
+        buttonText: 'Upload a file',
         maxConnections: 3,
         // validation        
         allowedExtensions: [],               
@@ -324,6 +325,7 @@ qq.FileUploaderBasic.prototype = {
             debug: this._options.debug,
             action: this._options.action,         
             maxConnections: this._options.maxConnections,   
+            buttonText: this._options.buttonText,
             onProgress: function(id, fileName, loaded, total){                
                 self._onProgress(id, fileName, loaded, total);
                 self._options.onProgress(id, fileName, loaded, total);                    
@@ -486,7 +488,7 @@ qq.FileUploader = function(o){
                 
         template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button">Upload a file</div>' +
+                '<div class="qq-upload-button">' + this._options.buttonText + '</div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
@@ -858,6 +860,7 @@ qq.UploadHandlerAbstract = function(o){
         action: '/upload.php',
         // maximum number of concurrent uploads        
         maxConnections: 999,
+        buttonText: 'Upload a file',
         onProgress: function(id, fileName, loaded, total){},
         onComplete: function(id, fileName, response){},
         onCancel: function(id, fileName){}
